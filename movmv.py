@@ -4,7 +4,7 @@
 #* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 # File Name : movmv.py
 # Creation Date : 05-09-2013
-# Last Modified : Thu 05 Sep 2013 07:10:48 PM EEST
+# Last Modified : Thu 05 Sep 2013 07:30:05 PM EEST
 # Created By : Greg Liras <gregliras@gmail.com>
 #_._._._._._._._._._._._._._._._._._._._._.*/
 
@@ -12,6 +12,7 @@ import guessit
 
 from sys import argv
 from os import rename
+from os import path
 
 
 def main():
@@ -21,10 +22,15 @@ def main():
         guess = guessit.guess_movie_info(name, info = ['filename'])
         #print guess.nice_string()
         while True:
-            ans = raw_input("Do you want me to move '{0}' to '{1}'? (y/n) ".format(name, guess["title"]))
+            if path.isdir(name) == True:
+                new_name = guess["title"]
+            else:
+                extension = name.split(".")[-1]
+                new_name = "{0}.{1}".format(guess["title"], extension)
+
+            ans = raw_input("Do you want me to move '{0}' to '{1}'? (y/n) ".format(name, new_name))
             if ans == "y":
-                rename(name, guess["title"])
-                break
+                rename(name, new_name)
             elif ans == "n":
                 break
     fp.close()
