@@ -4,7 +4,7 @@
 #* -.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.-.
 # File Name : movmv.py
 # Creation Date : 05-09-2013
-# Last Modified : Thu 05 Sep 2013 07:30:05 PM EEST
+# Last Modified : Thu 05 Sep 2013 07:33:03 PM EEST
 # Created By : Greg Liras <gregliras@gmail.com>
 #_._._._._._._._._._._._._._._._._._._._._.*/
 
@@ -28,7 +28,7 @@ def main():
                 extension = name.split(".")[-1]
                 new_name = "{0}.{1}".format(guess["title"], extension)
 
-            ans = raw_input("Do you want me to move '{0}' to '{1}'? (y/n) ".format(name, new_name))
+            ans = raw_input("Do you want me to rename '{0}' to '{1}'? (y/n) ".format(name, new_name))
             if ans == "y":
                 rename(name, new_name)
             elif ans == "n":
